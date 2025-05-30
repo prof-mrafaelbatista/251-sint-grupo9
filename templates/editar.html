@@ -1,0 +1,19 @@
+{% extends 'novo_termo.html' %}
+
+{% block content %}
+<h2>Editar Termo</h2>
+
+<form action="{{ url_for('atualizar_termo', termo_id=termo_id) }}" method="post">
+    <div class="form-group">
+        <label for="nome">Termo:</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="{{ termo[0] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="definicao">Definição:</label>
+        <textarea class="form-control" id="definicao" name="definicao" required>{{ termo[1] }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+</form>
+
+<a href="{{ url_for('glossario') }}" class="btn btn-secondary mt-2">Cancelar</a>
+{% endblock %}

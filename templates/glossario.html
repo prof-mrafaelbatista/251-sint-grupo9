@@ -18,10 +18,14 @@
 <td>{{ termo[0] }}</td>
 <td>{{ termo[1] }}</td>
 <td>
-Apagar
+    <form action="{{ url_for('excluir_termo', termo_id=loop.index0) }}" method="post" style="display:inline;">
+        <button type="submit" class="btn btn-danger btn-sm">Apagar</button>
+    </form>
+     <a href="{{ url_for('editar_termo', termo_id=loop.index0) }}" class="btn btn-warning btn-sm">Editar</a>
 </td>
 </tr>
 {% endfor %}
+
 </tbody>
 </table>
 {% endblock %}

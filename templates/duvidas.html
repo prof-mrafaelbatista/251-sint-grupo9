@@ -1,0 +1,13 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+    <h1>Faça sua pergunta:</h1>
+    <form method="POST">
+        <input type="text" name="pergunta" placeholder="Digite sua dúvida" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    {% if resposta %}
+        <h2>Resposta:</h2>
+        <p>{{ resposta }}</p>
+    {% endif %}
+{% endblock %}

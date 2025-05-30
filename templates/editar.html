@@ -1,19 +1,20 @@
-{% extends 'novo_termo.html' %}
+{% extends "modelo.html" %}
+{% block conteudo %}
+<h1>Editar Termo</h1>
 
-{% block content %}
-<h2>Editar Termo</h2>
+<form action="{{ url_for('atualizar_termo')}}" method="post">
+<input type="hidden" name="termo_id" value="{{ termo_id }}">
 
-<form action="{{ url_for('atualizar_termo', termo_id=termo_id) }}" method="post">
-    <div class="form-group">
-        <label for="nome">Termo:</label>
-        <input type="text" class="form-control" id="nome" name="nome" value="{{ termo[0] }}" required>
-    </div>
-    <div class="form-group">
-        <label for="definicao">Definição:</label>
-        <textarea class="form-control" id="definicao" name="definicao" required>{{ termo[1] }}</textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+<div class="mb-3">
+<label for="termo" class="form-label">Termo</label>
+<input class="form-control" id="termo" name="termo" aria-describedby="emailHelp" value="{{ termo }}">
+<div id="termoHelp" class="form-text">Termo para ser alterado.</div>
+</div>
+<div class="mb-3">
+<label for="definicao" class="form-label">Definição</label>
+<textarea class="form-control" id="definicao" name="definicao" rows="3">{{ definicao }}</textarea>
+</div>
+<button type="submit" class="btn btn-primary">Alterar</button>
 </form>
 
-<a href="{{ url_for('glossario') }}" class="btn btn-secondary mt-2">Cancelar</a>
 {% endblock %}

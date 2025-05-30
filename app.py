@@ -1,5 +1,7 @@
 import csv
 from os import write
+from flask import Flask, render_template, request
+import google.generativeai as genai
 
 from flask import Flask, render_template, url_for, request, redirect
 
@@ -49,7 +51,7 @@ def criar_termo():
 @app.route('/excluir_termo/<int:termo_id>', methods=['POST'])
 def excluir_termo(termo_id):
     with open('bd_glossario.csv', 'r', newline='') as file:
-        reader = csv.reader(file)
+        reader = csv.reader(file, delimiter=';')
         linhas = list(reader)
 
     for i, linha in enumerate(linhas):
@@ -58,7 +60,7 @@ def excluir_termo(termo_id):
             break
 
     with open('bd_glossario.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, delimiter=';')
         writer.writerows(linhas)
 
     return redirect(url_for('glossario'))
@@ -67,15 +69,54 @@ def excluir_termo(termo_id):
 @app.route('/editar_termo/<int:termo_id>', methods=['GET'])
 def editar_termo(termo_id):
     with open('bd_glossario.csv', 'r', newline='') as file:
-        reader = csv.reader(file)
+        reader = csv.reader(file, delimiter=';')
         linhas = list(reader)
 
-    termo = linhas[termo_id]
-    return render_template('editar.html', termo=termo, termo_id=termo_id)
+    termo = linhas[termo_id][0]
+    definicao = linhas[termo_id][1]
+    return render_template('editar.html', termo=termo, definicao=definicao, termo_id=termo_id)
 
 
+@app.route('/atualizar_termo', methods=['POST'])
+def atualizar_termo():
+    id = request.form['termo_id']
+    termo = request.form['termo']
+    definicao = request.form['definicao']
+
+    with open('bd_glossario.csv', 'r', newline='') as file:
+        reader = csv.reader(file, delimiter=';')
+        linhas = list(reader)
+
+        for i, linha in enumerate(linhas):
+            if i == int(id):
+                linhas[i] = [termo, definicao]
+                print('achei o termo', id)
+
+    with open('bd_glossario.csv', 'w', newline='') as file:
+        writer = csv.writer(file, delimiter=';')
+        writer.writerows(linhas)
+
+    return redirect(url_for('glossario'))
 
 
+genai.configure(api_key="AIzaSyAXrWr_CvUhEZfOJh-Rk5_2La_zKK9ptY0")
+
+# Modelo
+model = genai.GenerativeModel(model_name='gemini-1.0-pro')
+
+
+@app.route("/duvidas", methods=["GET", "POST"])
+def duvidas():
+    resposta = ""
+    if request.method == "POST":
+        pergunta = request.form.get("pergunta")
+        if pergunta:
+            try:
+                resultado = model.generate_content(pergunta)
+                resposta = resultado.text
+            except Exception as e:
+                resposta = f"Erro: {str(e)}"
+    return render_template("duvidas.html", resposta=resposta)
 
 
 app.run()

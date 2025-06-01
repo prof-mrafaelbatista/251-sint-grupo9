@@ -1,0 +1,64 @@
+{% extends "modelo.html" %}
+
+{% block conteudo %}
+
+<!-- Estilo embutido -->
+<style>
+    .caixa {
+        border: 1px solid #ccc;
+        background-color: #222;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    ol {
+        padding-left: 20px;
+    }
+
+    pre {
+        background-color: #111;
+        padding: 10px;
+        border-radius: 6px;
+        color: #0f0;
+        font-family: monospace;
+        white-space: pre-wrap;
+    }
+</style>
+
+<h1>Vetores e Matrizes</h1>
+
+<h2>Conceito</h2>
+<div class="caixa">
+    <p>Vetor (lista): Estrutura linear que armazena múltiplos valores em uma única variável.
+       Matriz (lista de listas): Estrutura bidimensional que armazena dados em linhas e colunas.</p>
+</div>
+
+<h2>Aplicação</h2>
+<div class="caixa">
+    <p>Usados para armazenar e manipular conjuntos de dados de forma organizada.</p>
+</div>
+
+<h2>Exemplo de código</h2>
+
+<h3></h3>
+<div class="caixa">
+    <pre>
+# Vetor
+notas = [7.5, 8.0, 9.2]
+media = sum(notas) / len(notas)
+print("Média:", media)
+
+# Matriz
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print("Elemento [1][2]:", matriz[1][2])  # Imprime 6
+
+    </pre>
+</div>
+
+{% endblock %}

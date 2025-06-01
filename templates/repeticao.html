@@ -1,0 +1,63 @@
+{% extends "modelo.html" %}
+
+{% block conteudo %}
+
+<!-- Estilo embutido -->
+<style>
+    .caixa {
+        border: 1px solid #ccc;
+        background-color: #222;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    ol {
+        padding-left: 20px;
+    }
+
+    pre {
+        background-color: #111;
+        padding: 10px;
+        border-radius: 6px;
+        color: #0f0;
+        font-family: monospace;
+        white-space: pre-wrap;
+    }
+</style>
+
+<h1>Estrutura de Repetição</h1>
+
+<h2>Conceito</h2>
+<div class="caixa">
+    <p>Permitem que um bloco de código seja executado repetidamente enquanto uma condição for verdadeira.</p>
+</div>
+
+<h2>Aplicação</h2>
+<div class="caixa">
+    <p>Muito usadas para percorrer coleções, contar, verificar entradas de dados, entre outros.</p>
+</div>
+
+<h2>Exemplo de código</h2>
+
+<h3>Usando while</h3>
+<div class="caixa">
+    <pre>
+contador = 1
+
+while contador <= 5:
+    print("Contagem:", contador)
+    contador += 1
+    </pre>
+</div>
+
+<h3>Usando for</h3>
+<div class="caixa">
+    <pre>
+for i in range(1, 6):
+    print("Contagem:", i)
+    </pre>
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "modelo.html" %}
+
+{% block conteudo %}
+
+<!-- Estilo embutido -->
+<style>
+    .caixa {
+        border: 1px solid #ccc;
+        background-color: #222;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    ol {
+        padding-left: 20px;
+    }
+
+    pre {
+        background-color: #111;
+        padding: 10px;
+        border-radius: 6px;
+        color: #0f0;
+        font-family: monospace;
+        white-space: pre-wrap;
+    }
+</style>
+
+<h1>Funções e Procedimentos</h1>
+
+<h2>Conceito</h2>
+<div class="caixa">
+    <p>Blocos de código que realizam tarefas específicas e podem ser reutilizados.
+        Funções retornam valores; procedimentos (em algumas linguagens) apenas executam ações.</p>
+</div>
+
+<h2>Aplicação</h2>
+<div class="caixa">
+    <p>Usados para modularizar o código, melhorar a organização e evitar repetição.</p>
+</div>
+
+<h2>Exemplo de código</h2>
+
+
+<div class="caixa">
+    <pre>
+
+
+        # Função com retorno
+def soma(a, b):
+    return a + b
+
+# Procedimento (sem retorno específico)
+def saudacao(nome):
+    print(f"Olá, {nome}!")
+
+# Usando as funções
+resultado = soma(5, 3)
+print("Soma:", resultado)
+saudacao("Maria")
+
+
+    </pre>
+</div>
+
+{% endblock %}

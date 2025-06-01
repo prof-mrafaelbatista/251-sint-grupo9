@@ -1,0 +1,64 @@
+{% extends "modelo.html" %}
+
+{% block conteudo %}
+
+<!-- Estilo embutido -->
+<style>
+    .caixa {
+        border: 1px solid #ccc;
+        background-color: #222;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    ol {
+        padding-left: 20px;
+    }
+
+    pre {
+        background-color: #111;
+        padding: 10px;
+        border-radius: 6px;
+        color: #0f0;
+        font-family: monospace;
+        white-space: pre-wrap;
+    }
+</style>
+
+<h1>Tratamento de Exceção</h1>
+
+<h2>Conceito</h2>
+<div class="caixa">
+    <p>Mecanismo para lidar com erros que podem ocorrer durante a execução do programa.</p>
+</div>
+
+<h2>Aplicação</h2>
+<div class="caixa">
+    <p>Usado para evitar que o programa seja encerrado abruptamente quando ocorre um erro.</p>
+</div>
+
+<h2>Exemplo de código</h2>
+
+
+<div class="caixa">
+    <pre>
+
+try:
+    numero = int(input("Digite um número inteiro: "))
+    resultado = 10 / numero
+    print("Resultado:", resultado)
+except ValueError:
+    print("Entrada inválida. Digite um número inteiro.")
+except ZeroDivisionError:
+    print("Erro: divisão por zero.")
+finally:
+    print("Fim do programa.")
+
+
+
+    </pre>
+</div>
+
+{% endblock %}

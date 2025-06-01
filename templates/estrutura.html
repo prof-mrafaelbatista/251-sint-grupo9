@@ -1,0 +1,56 @@
+{% extends "modelo.html" %}
+
+{% block conteudo %}
+
+<!-- Estilo embutido -->
+<style>
+    .caixa {
+        border: 1px solid #ccc;
+        background-color: #222;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    ol {
+        padding-left: 20px;
+    }
+
+    pre {
+        background-color: #111;
+        padding: 10px;
+        border-radius: 6px;
+        color: #0f0;
+        font-family: monospace;
+        white-space: pre-wrap;
+    }
+</style>
+
+<h1>Estrutura de Seleção</h1>
+
+<h2>Conceito</h2>
+<div class="caixa">
+    <p>Permitem que o programa tome decisões baseadas em condições (verdadeiras ou falsas).</p>
+</div>
+
+<h2>Aplicação</h2>
+<div class="caixa">
+    <p>Utilizadas para executar diferentes blocos de código dependendo do valor de variáveis ou expressões lógicas.</p>
+</div>
+
+<h2>Exemplo de código</h2>
+
+<h3>Usando while</h3>
+<div class="caixa">
+    <pre>
+idade = int(input("Digite sua idade: "))
+
+if idade >= 18:
+    print("Você é maior de idade.")
+else:
+    print("Você é menor de idade.")
+    </pre>
+</div>
+
+{% endblock %}

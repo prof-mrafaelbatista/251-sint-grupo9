@@ -19,6 +19,29 @@ def sobre_equipe():
     return render_template('sobre_equipe.html')
 
 
+@app.route('/estrutadeselecao')
+def estrutura():
+    return render_template('estrutura.html')
+
+
+@app.route('/estrutaderepeticao')
+def estruturaderep():
+    return render_template('repeticao.html')
+
+
+@app.route('/vetores')
+def vetores():
+    return render_template('vetores.html')
+
+
+@app.route('/funcoes')
+def funcoes():
+    return render_template('funcoes.html')
+
+@app.route('/tratamento')
+def tratamento():
+    return render_template('tratamento.html')
+
 @app.route('/glossario')
 def glossario():
     glossario_de_termos = []
@@ -99,10 +122,10 @@ def atualizar_termo():
     return redirect(url_for('glossario'))
 
 
-genai.configure(api_key="AIzaSyAXrWr_CvUhEZfOJh-Rk5_2La_zKK9ptY0")
+genai.configure(api_key="")
 
 # Modelo
-model = genai.GenerativeModel(model_name='gemini-1.0-pro')
+model = genai.GenerativeModel(model_name='gemini-1.5-flash')
 
 
 @app.route("/duvidas", methods=["GET", "POST"])
@@ -113,7 +136,7 @@ def duvidas():
         if pergunta:
             try:
                 resultado = model.generate_content(pergunta)
-                resposta = resultado.text
+                resposta = resultado.text or "Sem resposta gerada."
             except Exception as e:
                 resposta = f"Erro: {str(e)}"
     return render_template("duvidas.html", resposta=resposta)

@@ -4,7 +4,7 @@
 Este projeto é uma aplicação web desenvolvida com **Flask** que integra a **API do Gemini** para fornecer respostas inteligentes a perguntas dos usuários. Ele também utiliza um **glossário de termos** armazenado em um arquivo CSV para enriquecer as respostas exibidas.
 
 ---
-
+```
 ## 📁 Estrutura do Projeto
 251-sint-grupo9/
 ├── app.py
@@ -16,6 +16,7 @@ Este projeto é uma aplicação web desenvolvida com **Flask** que integra a **A
 │   ├── index.html
 │   └── resposta.html
 └── README.md
+```
 - `app.py`: Arquivo principal da aplicação Flask.  
 - `bd_glossario.csv`: Arquivo CSV contendo termos e definições para o glossário.  
 - `requisitos.txt`: Lista de dependências do projeto.  
